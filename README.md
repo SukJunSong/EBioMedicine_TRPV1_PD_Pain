@@ -15,7 +15,17 @@ The private `00_LOCAL_PATHS.R` is ignored by Git. The original raw dataset filen
 
 ## Order and inclusion
 
-**04 was deliberately omitted** because it re-creates the matrices saved by 03 with inconsistent column conventions.
+### Analysis scripts by category
+
+| Analysis category | Script numbers | Description |
+|---|---|---|
+| PPMI preprocessing | 01–03 | Participant matching, pain-group classification, and expression matrix generation |
+| PPMI longitudinal analysis | 07–08 | TRPV1-related gene score, mixed-effects models, and longitudinal expression |
+| PPMI differential expression and medication analysis | 05–06, 09–15 | DESeq2 analysis, volcano plots, heatmaps, medication sensitivity, and clinical analyses |
+| GSE8397 brain transcriptomics | 16–19 | Differential expression, GO/GSEA, and enrichment visualization |
+| Hospital PBMC analysis | 20 | Correlation analysis of TRP channel expression and clinical parameters |
+
+**Script 04 was omitted** because its matrix-merging functionality was consolidated into Script 03. The original numbering was retained for traceability.
 
 For the paired longitudinal analysis, run `01 → 02 → 03 → 07 → 08`. The 03 script is the **COMPLETE** version that successfully created 817-subject/1634-sample expression matrices, not the older strict age/sex-matching version. The longitudinal models should use the documented classified 425-subject subset and verify group counts.
 
@@ -39,3 +49,5 @@ For public postmortem brain analysis run `16 → 17 → 18 → 19`. For hospital
 These scripts are copied from the user-supplied R analysis versions, with **only the local absolute paths replaced by environment settings and filenames cleaned**. The 03 source was taken from the working COMPLETE version. Analysis/statistical calculations are unchanged. Run and compare the output n, estimates, adjusted p-values and actual figures with the final submission before public release. Full R execution and data-based reproduction could not be performed in the current sandbox, which lacks the private PPMI/hospital datasets and the R runtime.
 
 See `INPUT_FILE_MAP.md`, `STATISTICS_AUDIT.md`, and `FILE_NAME_MAP.md`.
+
+
